@@ -1,18 +1,41 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf'
+group :lint do
+  gem 'foodcritic', '~> 3.0'
+  gem 'rubocop', '~> 0.18'
+  gem 'rainbow', '< 2.0'
+end
 
-# Uncomment these lines if you want to live on the Edge:
-#
-# group :development do
-#   gem "berkshelf", github: "berkshelf/berkshelf"
-#   gem "vagrant", github: "mitchellh/vagrant", tag: "v1.5.2"
-# end
-#
-# group :plugins do
-#   gem "vagrant-berkshelf", github: "berkshelf/vagrant-berkshelf"
-#   gem "vagrant-omnibus", github: "schisamo/vagrant-omnibus"
-# end
+group :unit do
+  gem 'berkshelf',  '~> 3.1'
+  gem 'chefspec',   '~> 3.4'
+end
 
-gem 'test-kitchen'
-gem 'kitchen-vagrant'
+group :kitchen_common do
+  gem 'test-kitchen', '~> 1.2'
+end
+
+group :kitchen_vagrant do
+  gem 'kitchen-vagrant', '~> 0.11'
+end
+
+group :kitchen_cloud do
+  gem 'kitchen-digitalocean'
+  gem 'kitchen-ec2'
+  gem 'kitchen-joyent'
+  gem 'kitchen-gce'
+end
+
+group :development do
+  gem 'ruby_gntp'
+  gem 'growl'
+  gem 'rb-fsevent'
+  gem 'guard', '~> 2.4'
+  gem 'guard-kitchen'
+  gem 'guard-foodcritic'
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
+  gem 'rake'
+  gem 'fauxhai'
+  gem 'pry-nav'
+end
